@@ -1,6 +1,6 @@
 package com.mahjong.springboot;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -28,7 +28,7 @@ public class Game {
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-    // Constructors, getters, and setters
+    // Constructors
 
     public Game() {
     }
@@ -62,9 +62,9 @@ public class Game {
         return startTime;
     }
 
-    public void setStartTime
- this.startTime = startTime;
-}
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
 
     public Timestamp getEndTime() {
         return endTime;
