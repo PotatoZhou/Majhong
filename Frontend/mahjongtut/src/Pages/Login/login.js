@@ -24,11 +24,12 @@ export default function SignIn() {
     console.log({
       email: data.get("email"),
       password: data.get("password"),
-      if() {
-        // 登录成功
-        // 跳转到主页
-      },
     });
+    if (data.get("email") === "1") {
+      window.location.href = "/user";
+    } else {
+      window.location.href = "/user";
+    }
   };
 
   return (
