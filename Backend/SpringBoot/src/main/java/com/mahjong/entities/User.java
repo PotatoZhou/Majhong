@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
     private String username;
@@ -17,12 +17,10 @@ public class User {
     // Constructors
 
     public User() {
-        // Default constructor required by JPA
         super();
     }
 
-    public User(String username, String password, Long user_id) {
-        this.user_id = user_id;
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
