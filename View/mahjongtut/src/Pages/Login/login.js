@@ -11,25 +11,30 @@ import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
 import * as React from "react";
 import oneTile from "../../oneTile.png";
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  // 等user接口开发
+  const loginUrl = "http://localhost:8000/login";
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    const configs = {
+      method: "post",
+      url: loginUrl,
+      body: data,
+    };
+    axios.request(configs).then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.message === "Login successful") {
+        window.location.href = "/mahjong";
+      } else {
+        alert("Login failed");
+      }
     });
-    if (data.get("email") === "1") {
-      window.location.href = "/user";
-    } else {
-      window.location.href = "/user";
-    }
   };
 
   return (

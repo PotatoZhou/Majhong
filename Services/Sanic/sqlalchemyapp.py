@@ -2,6 +2,7 @@ from sqlalchemy import Table, MetaData, create_engine, Column, Integer, String, 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import mapper, sessionmaker
 from sanic import Request, Sanic, json, response
+from sanic_cors import CORS
 import pymysql
 import uuid # not used right now
 import random
@@ -37,6 +38,7 @@ session = Session()
 
 
 app = Sanic("Mahjong")
+CORS(app)
 
 
 @app.route("/login", methods=['POST'])
