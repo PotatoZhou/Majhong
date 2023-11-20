@@ -14,11 +14,13 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import * as React from "react";
 import oneTile from "../../oneTile.png";
+import { useHistory } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
   const loginUrl = "http://localhost:8000/login";
+  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -30,7 +32,7 @@ export default function SignIn() {
     axios.request(configs).then(function (response) {
       console.log(JSON.stringify(response.data));
       if (response.data.message === "Login successful") {
-        window.location.href = "/mahjong";
+        history.push("/mahjongtut");
       } else {
         alert("Login failed");
       }
